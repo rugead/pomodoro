@@ -10,9 +10,29 @@ html
   body
     h3 pomodoro
 
-    div#my-button MMMMM
+    div.show
+      div.preset
+        div#breakminutes.txt 5
+        div#timerminutes.txt 25
 
-    div#txt
+      div.counter
+        span#minutes.txt 00
+        span#colon.txt :
+        span#seconds.txt 04
+
+      div.dial-container
+        div.wedge
+
+    div.buttons
+      div#start-button.btn START
+      div#stop-button.btn STOP
+      div#resetButton.btn resetButton
+    div.setpreset
+      div#increaseTimerMinutes.btn increase timer minutes
+      div#decreaseTimerMinutes.btn decrease timer minutes
+
+      div#increaseBreakMinutes.btn increase Break Minutes
+      div#decreaseBreakMinutes.btn decrease Break Minutes
 
 
 

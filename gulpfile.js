@@ -7,6 +7,7 @@ var watchify = require('watchify');
 var babelify = require('babelify');
 var exorcist = require('exorcist');
 var browserSync = require('browser-sync').create();
+var cleanCSS = require('gulp-clean-css');
 
 function bundle(bundler) {
     return bundler
@@ -22,7 +23,7 @@ function bundle(bundler) {
 
 const srcPaths = {
     pug: './app/*.pug',
-    css: './app/*.css'
+    css: './app/css/*.css'
 };
 
 const buildPaths = {
@@ -40,8 +41,17 @@ gulp.task('js', function () {
     return bundle(browserify('./app/js/app.js'));
 });
 
+gulp.task('css', function () {
+    return gulp.src(srcPaths.css)
+        // .pipe(sourcemaps.init())
+        .pipe(cleanCSS({ compatibility: 'ie8' }))
+        // .pipe(sourcemaps.write())
+        .pipe(gulp.dest('build/css'));
+});
+
 gulp.task('watch', function () {
     gulp.watch(srcPaths.pug, ['pug']);
+    gulp.watch(srcPaths.css, ['css']);
 
     watchify.args.debug = true;
     var watcher = watchify(browserify('./app/js/app.js', watchify.args).transform(babelify, { presets: ['es2015'] }));

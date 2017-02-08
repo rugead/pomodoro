@@ -1,0 +1,45 @@
+.wedge {
+  animation: rotate 4s infinite linear;
+  border-radius: 0 4em 4em 0;
+  background: green;
+  width: 2em;
+  height: 4em;
+  transform-origin: 0% 50%;
+}
+
+/*@keyframes rotate {
+  100% {
+    transform: rotateZ(360deg);
+  }
+}*/
+
+.dial-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.show {
+  font-size: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;;
+}
+
+.btn {
+  margin: 6px;
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  padding: 16px;
+  cursor: pointer;
+  background: rgb(96, 157, 219);
+  box-shadow:         1px 4px 6px rgba(50, 50, 50, 0.75);
+  -webkit-box-shadow: 1px 4px 6px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow:    1px 4px 6px rgba(50, 50, 50, 0.75);
+}
+.btn:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+
+}
