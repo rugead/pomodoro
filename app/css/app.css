@@ -1,45 +1,129 @@
-.wedge {
-  animation: rotate 4s infinite linear;
-  border-radius: 0 4em 4em 0;
-  background: green;
-  width: 2em;
-  height: 4em;
-  transform-origin: 0% 50%;
+body {
+  font-family: monospace;
+  font-size: 3vw;
+  color: tomato;
 }
 
-/*@keyframes rotate {
-  100% {
-    transform: rotateZ(360deg);
-  }
-}*/
-
-.dial-container {
+section {
   display: flex;
-  flex-direction: row;
+  justify-content: space-around;
+  align-content: stretch;
+  align-items: stretch;
+}
+
+.header  {
+  display: flex;
+  flex: 1;
   justify-content: center;
+  background-color: #ccc;
+  color: tomato;
+
 }
 
-.show {
-  font-size: 2em;
+.timerpreset {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  flex-flow: wrap;
+  justify-content: space-around;
+  background-color: #ccc;
+  align-items: center;
+  }
+
+.settime {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 1em;
+}
+
+.content {
+  width: 80vw;
+  margin: 10vh 10vw 10vh 10vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.showtimer {
+  background-color: tomato;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;;
+  justify-content: space-around;
+  align-items: center;
+  height: 20vh;
+}
+#seconds, #colon, #minutes{
+  font-size: 2em;
+  color: #ccc;
+}
+/* start moving box */
+.aaa {
+  display: flex;
+  flex: 1;
+  background-color: tomato;
+}
+.sandclock-container {
+  display: flex;
+  flex: 1;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.hide-movingbox {
+  flex: 1;
+  height: 1em;
+  overflow: hidden;
+}
+
+.move {
+  flex: 1;
+  background-color: darkseagreen;
+  position: relative;
+  height: 4em;
+}
+/* end moving box */
+
+/* elements like buttons, text ... */
+.stop {
+  margin-left: 1em;
+  margin-right: 1em;
 }
 
 .btn {
-  margin: 6px;
-  color: rgb(255, 255, 255);
-  font-size: 14px;
-  padding: 16px;
+  flex: 1;
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
   cursor: pointer;
-  background: rgb(96, 157, 219);
+  color: tomato;
+  /*font-size: 1em;*/
+  font-weight: 600;;
+  padding: 1em;
+  cursor: pointer;
+  background: #ccc;
   box-shadow:         1px 4px 6px rgba(50, 50, 50, 0.75);
   -webkit-box-shadow: 1px 4px 6px rgba(50, 50, 50, 0.75);
   -moz-box-shadow:    1px 4px 6px rgba(50, 50, 50, 0.75);
 }
 .btn:active {
-  background-color: #3e8e41;
+  background-color: tomato;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
+  color: #ccc;
+}
 
+.xxx {
+  display: flex;
+}
+
+.plus, .minus {
+  cursor: pointer;
+  /*font-size: 1em;*/
+}
+
+.txt{
+  /*font-size: 1em;*/
+  padding: 0.6em;
+  height: 1em;
 }

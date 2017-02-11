@@ -17,3 +17,4 @@ lib-cov
 build
 dist
 node_modules
+tictactoe.js

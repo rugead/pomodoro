@@ -6,33 +6,57 @@ html
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='description', content='what rugead has learned and what I can do')
     meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css', type='text/css')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Ubuntu')
     link(rel='stylesheet', href='./css/app.css', type='text/css')
   body
-    h3 pomodoro
+    div.content
+      section
+        div.header
+          h1 pomodoro
 
-    div.show
-      div.preset
-        div#breakminutes.txt 5
-        div#timerminutes.txt 25
+      section
+        div.timerpreset
+          div.settime
+            span.txt adjust break minutes
+            div.xxx
+              span#decreaseBreakMinutes.txt.minus
+                i.fa.fa-minus(aria-hidden="true")
+              span#breakminutes.txt 05
+              span#increaseBreakMinutes.txt.plus
+                i.fa.fa-plus(aria-hidden="true")
 
-      div.counter
-        span#minutes.txt 00
+          div.settime
+            span.txt adjust timer minutes
+            div.xxx
+              span#decreaseTimerMinutes.txt.minus
+                i.fa.fa-minus(aria-hidden="true")
+              span#timerminutes.txt 25
+              span#increaseTimerMinutes.txt.plus
+                i.fa.fa-plus(aria-hidden="true")
+
+      section
+        div.aaa
+          div.sandclock-container
+            div.hide-movingbox
+              div#movingMin.move
+
+      section.showtimer
+        span#minutes.txt 25
         span#colon.txt :
-        span#seconds.txt 04
+        span#seconds.txt 00
 
-      div.dial-container
-        div.wedge
+      section
+        div.aaa
+          div.sandclock-container
+            div.hide-movingbox
+              div#movingSec.move
 
-    div.buttons
-      div#start-button.btn START
-      div#stop-button.btn STOP
-      div#resetButton.btn resetButton
-    div.setpreset
-      div#increaseTimerMinutes.btn increase timer minutes
-      div#decreaseTimerMinutes.btn decrease timer minutes
 
-      div#increaseBreakMinutes.btn increase Break Minutes
-      div#decreaseBreakMinutes.btn decrease Break Minutes
+      section.buttons
+        div#start-button.btn start
+        div#stop-button.btn.stop stop
+        div#resetButton.btn reset
 
 
 
