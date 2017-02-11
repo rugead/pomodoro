@@ -2,7 +2,11 @@
 'use strict';
 
 var timeoutID = void 0;
+var secondsCounter = 0;
+var minutesCounter = 0;
 var timerOnOff = 'off';
+var moveSec = document.getElementById('moveingSec');
+var moveMin = document.getElementById('moveingMin');
 var m = function m() {
     return document.getElementById('minutes').innerHTML;
 };
@@ -15,7 +19,6 @@ var tm = function tm() {
 var bm = function bm() {
     return document.getElementById('breakminutes').innerHTML;
 };
-var rotateDegrees = 0;
 
 var checkTime = function checkTime(i) {
     if (i < 10) {
@@ -70,9 +73,8 @@ var timer = function timer(seconds) {
         toggleTimer();
         return;
     }
-    rotation(6);
-    console.log('SECONDS', seconds);
-    console.log('TIMEOUTID', toggleWorkBreak);
+
+    moveSec(1.666666);
     seconds = seconds - 1;
     var mB = Math.floor(seconds / 60);
     var sB = seconds % 60;
@@ -84,73 +86,97 @@ var timer = function timer(seconds) {
 };
 
 var decreaseBreakMinutes = function decreaseBreakMinutes() {
-    document.getElementById('breakminutes').innerHTML = parseInt(bm()) - parseInt(1);
+    document.getElementById('breakminutes').innerHTML = checkTime(parseInt(bm()) - parseInt(1));
 };
 
 var increaseBreakMinutes = function increaseBreakMinutes() {
-    document.getElementById('breakminutes').innerHTML = parseInt(bm()) + parseInt(1);
+    document.getElementById('breakminutes').innerHTML = checkTime(parseInt(bm()) + parseInt(1));
 };
 
 var decreaseTimerMinutes = function decreaseTimerMinutes() {
-    document.getElementById('timerminutes').innerHTML = parseInt(tm()) - parseInt(1);
+    var minutes = parseInt(tm()) - parseInt(1);
+    document.getElementById('timerminutes').innerHTML = minutes;
+    document.getElementById('minutes').innerHTML = checkTime(minutes);
 };
 
 var increaseTimerMinutes = function increaseTimerMinutes() {
-    document.getElementById('timerminutes').innerHTML = parseInt(tm()) + parseInt(1);
+    var minutes = parseInt(tm()) + parseInt(1);
+    document.getElementById('timerminutes').innerHTML = minutes;
+    document.getElementById('minutes').innerHTML = checkTime(minutes);
 };
 
 var reset = function reset() {
     var tm = document.getElementById('timerminutes').innerHTML;
-    var bm = document.getElementById('breakminutes').innerHTML;
     clearTimeout(timeoutID);
     timeoutID = undefined;
     timerOnOff = 'off';
-    console.log('stop', timerOnOff);
-    document.getElementById('timerminutes').innerHTML = tm;
-    document.getElementById('breakminutes').innerHTML = bm;
-    document.querySelector(".wedge").style.transform = 'rotateZ(0deg)';
-    rotateDegrees = 0;
+    secondsCounter = 0;
+    document.getElementById('minutes').innerHTML = tm;
+    document.getElementById('seconds').innerHTML = checkTime(0);
+    document.querySelector('#movingSec').style.transform = 'translateY(0%)';
+    document.querySelector('#movingMin').style.transform = 'translateY(0%)';
 };
+
 var startButton = document.getElementById('start-button');
-var stopButton = document.getElementById('stop-button');
-var resetButton = document.getElementById('resetButton');
-
-var increaseBreakButton = document.getElementById('increaseBreakMinutes');
-var decreaseBreakButton = document.getElementById('decreaseBreakMinutes');
-var increaseTimerButton = document.getElementById('increaseTimerMinutes');
-var decreaseTimerButton = document.getElementById('decreaseTimerMinutes');
-
-stopButton.addEventListener('click', function () {
-    stopTimer();
-}, false);
-
 startButton.addEventListener('click', function () {
     startTimer();
 }, false);
 
+var stopButton = document.getElementById('stop-button');
+stopButton.addEventListener('click', function () {
+    stopTimer();
+}, false);
+
+var resetButton = document.getElementById('resetButton');
+
+moveSec = function moveSec() {
+    var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1.666666;
+
+    var d = void 0;
+    secondsCounter = secondsCounter + x;
+    if (secondsCounter > 99.5) {
+        secondsCounter = 0;
+        d = 'translateX(' + secondsCounter + '%)';
+
+        moveMin(m());
+    } else {
+        d = 'translateX(' + secondsCounter + '%)';
+    }
+
+    console.log(d);
+    document.querySelector('#movingSec').style.transform = d;
+};
+
+moveMin = function moveMin(x) {
+    // document.getElementById('minutes').innerHTML = x - 1;
+    minutesCounter = minutesCounter + 100 / x;
+    var d = 'translateX(' + minutesCounter + '%)';
+    document.querySelector('#movingMin').style.transform = d;
+};
+
+var increaseBreakButton = document.getElementById('increaseBreakMinutes');
+increaseBreakButton.addEventListener('click', function () {
+    increaseBreakMinutes();
+}, false);
+
+var increaseTimerButton = document.getElementById('increaseTimerMinutes');
 resetButton.addEventListener('click', function () {
     reset();
 }, false);
 
-increaseBreakButton.addEventListener('click', function () {
-    increaseBreakMinutes();rotation(6);
-}, false);
+var decreaseBreakButton = document.getElementById('decreaseBreakMinutes');
 decreaseBreakButton.addEventListener('click', function () {
     decreaseBreakMinutes();
 }, false);
+
 increaseTimerButton.addEventListener('click', function () {
     increaseTimerMinutes();
 }, false);
+
+var decreaseTimerButton = document.getElementById('decreaseTimerMinutes');
 decreaseTimerButton.addEventListener('click', function () {
     decreaseTimerMinutes();
 }, false);
-
-// --> rotation
-function rotation(degrees) {
-    rotateDegrees = rotateDegrees + degrees;
-    var d = 'rotate(' + rotateDegrees + 'deg)';
-    document.querySelector(".wedge").style.transform = d;
-}
 
 },{}]},{},[1])
 //# sourceMappingURL=app.js.map
