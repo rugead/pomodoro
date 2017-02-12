@@ -20,13 +20,11 @@ let startTimer = () => {
     if (timerOnOff  === 'pause') {
         timerOnOff = 'on';
         let t = parseInt(m()) * 60  + parseInt(s());
-        console.log(t);
         timer(t);
     }
 
     if ((timerOnOff === 'off') && (toggleWorkBreak === 'break')) {
         timerOnOff = 'on';
-        console.log('TIMERONOFF', timerOnOff);
         let sec = parseInt(tm() * 60);
         toggleWorkBreak = 'work';
         timer(sec);
@@ -34,7 +32,6 @@ let startTimer = () => {
 
     if ((timerOnOff === 'off') && (toggleWorkBreak === 'work')) {
         timerOnOff = 'on';
-        console.log('TIMERONOFF', timerOnOff);
         let sec = parseInt(bm() * 60);
         toggleWorkBreak = 'break';
         timer(sec);
@@ -45,14 +42,12 @@ function stopTimer() {
     clearTimeout(timeoutID);
     timeoutID = undefined;
     timerOnOff = 'pause';
-    console.log('stop', timerOnOff);
 }
 
 function toggleTimer() {
     clearTimeout(timeoutID);
     timeoutID = undefined;
     timerOnOff = 'off';
-    console.log('TIMEOUTID IF', timeoutID);
     startTimer();
 }
 

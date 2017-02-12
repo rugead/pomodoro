@@ -1,6 +1,6 @@
 body {
-  font-family: monospace;
-  font-size: 3vw;
+  background: white;
+  font-family: ubuntu;
   color: tomato;
 }
 
@@ -12,12 +12,7 @@ section {
 }
 
 .header  {
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  background-color: #ccc;
   color: tomato;
-
 }
 
 .timerpreset {
@@ -28,6 +23,7 @@ section {
   justify-content: space-around;
   background-color: #ccc;
   align-items: center;
+  height: 20vh;
   }
 
 .settime {
@@ -38,11 +34,17 @@ section {
 }
 
 .content {
-  width: 80vw;
-  margin: 10vh 10vw 10vh 10vw;
-  display: flex;
+	width: 60vw;
+	margin: 4vh 20vw 0 20vw;
+  /*display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between;*/
+}
+
+.column {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 .showtimer {
@@ -126,4 +128,33 @@ section {
   /*font-size: 1em;*/
   padding: 0.6em;
   height: 1em;
+}
+
+/* Tabletts */
+@media only screen and (min-width: 760px) {
+	/*.content { max-width: 760px }*/
+  .content {
+  	width: 80vw;
+  	margin: 4vh 10vw 0 10vw;
+  }
+
+}
+
+/* Mittlere Monitore */
+@media only screen and (min-width: 980px) {
+	/*.content { max-width: 980px }*/
+  .content {
+  	width: 60vw;
+  	margin: 4vh 20vw 0 20vw;
+  }
+
+}
+
+/* Große Monitore */
+@media only screen and (min-width: 1280px) {
+  .content {
+  	width: 40vw;
+  	margin: 4vh 30vw 0 30vw;
+  }
+
 }
