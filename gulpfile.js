@@ -10,7 +10,6 @@ var browserSync = require('browser-sync').create();
 var cleanCSS = require('gulp-clean-css');
 var ghPages = require('gulp-gh-pages');
 
-
 function bundle(bundler) {
     return bundler
       .bundle()
@@ -74,14 +73,14 @@ gulp.task('watch', function () {
         browser: 'chrome',
         server: './build',
         logFileChange: false,
-        port: 3010
+        port: 8000
     });
 
 });
 
-gulp.task('gh', function() {
-  return gulp.src('./build/**/*')
-    .pipe(ghPages());
+gulp.task('gh', function () {
+    return gulp.src('./build/**/*')
+      .pipe(ghPages());
 });
 
 gulp.task('default', ['pug', 'watch', 'css']);
