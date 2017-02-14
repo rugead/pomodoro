@@ -9,6 +9,7 @@ var exorcist = require('exorcist');
 var browserSync = require('browser-sync').create();
 var cleanCSS = require('gulp-clean-css');
 var ghPages = require('gulp-gh-pages');
+const autoprefixer = require('gulp-autoprefixer');
 
 function bundle(bundler) {
     return bundler
@@ -46,6 +47,10 @@ gulp.task('css', function () {
     return gulp.src(srcPaths.css)
         // .pipe(sourcemaps.init())
         .pipe(cleanCSS({ compatibility: 'ie8' }))
+        .pipe(autoprefixer({
+        browsers: ['last 2 versions'],
+        cascade: false
+    }))
         // .pipe(sourcemaps.write())
         .pipe(gulp.dest('build/css'));
 });
@@ -83,4 +88,5 @@ gulp.task('gh', function () {
       .pipe(ghPages());
 });
 
+gulp.task('deploy', ['pug', 'js', 'css', 'gh']);
 gulp.task('default', ['pug', 'watch', 'css']);
