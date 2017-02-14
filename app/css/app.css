@@ -34,8 +34,8 @@ section {
 }
 
 .content {
-	width: 60vw;
-	margin: 4vh 20vw 0 20vw;
+	width: 100vw;
+	margin: 4vh 0vw 0 0vw;
   /*display: flex;
   flex-direction: column;
   justify-content: space-between;*/
@@ -101,7 +101,8 @@ section {
   color: tomato;
   /*font-size: 1em;*/
   font-weight: 600;;
-  padding: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
   cursor: pointer;
   background: #ccc;
   box-shadow:         1px 4px 6px rgba(50, 50, 50, 0.75);
